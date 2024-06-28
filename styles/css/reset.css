@@ -146,6 +146,7 @@ textarea:focus-visible {
   border: none;
   outline: none;
   color: inherit;
+  font-size: inherit;
 }
 
 * {
