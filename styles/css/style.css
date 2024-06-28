@@ -113,7 +113,7 @@ body {
   cursor: pointer;
   height: 100%;
 }
-.product__options-item-count-block .disable path {
+.product__options-item-count-block .product__options-item-count-minus_disable path {
   fill: rgba(2, 10, 10, 0.3);
 }
 .product__options-item-count-block p {

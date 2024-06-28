@@ -63,7 +63,7 @@ countBlocks.forEach((item) => {
   minusButton.addEventListener('click', () => {
     options[option].remove();
     if (options[option].count === 0) {
-      minusButton.classList.add('disable');
+      minusButton.classList.add('product__options-item-count-minus_disable');
       options[option].isFree = false;
     }
     if (options.getCount() === 0) {
@@ -80,7 +80,8 @@ countBlocks.forEach((item) => {
   });
   plusButton.addEventListener('click', () => {
     options[option].add();
-    if (options[option].count === 1) minusButton.classList.remove('disable');
+    if (options[option].count === 1)
+      minusButton.classList.remove('product__options-item-count-minus_disable');
     if (options.getCount() > 0) freeSauce.textContent = 1;
     if (options.getCount() === 1) {
       costs.forEach((item) => (item.textContent = 60));
