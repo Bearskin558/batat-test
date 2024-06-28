@@ -28,7 +28,10 @@ class Options {
   };
   getCost = () => {
     return Object.values(this).reduce((sum, option) => {
-      if (typeof option === 'object') return sum + option.price * option.count;
+      if (typeof option === 'object')
+        return option.isFree
+          ? sum + option.price * (option.count - 1)
+          : sum + option.price * option.count;
       return 0;
     }, 0);
   };
@@ -59,10 +62,18 @@ countBlocks.forEach((item) => {
   const option = item.dataset.itemName;
   minusButton.addEventListener('click', () => {
     options[option].remove();
-    if (options[option].count === 0) minusButton.classList.add('disable');
+    if (options[option].count === 0) {
+      minusButton.classList.add('disable');
+      options[option].isFree = false;
+    }
     if (options.getCount() === 0) {
       freeSauce.textContent = 0;
       costs.forEach((item) => (item.textContent = 0));
+    }
+    if (options[option].isFree && options[option].count === 1) {
+      item.previousElementSibling.querySelector(
+        '.product__options-cost-value',
+      ).textContent = 0;
     }
     count.textContent = options[option].count;
     price.textContent = options.getCost();
@@ -77,6 +88,11 @@ countBlocks.forEach((item) => {
         '.product__options-cost-value',
       ).textContent = 0;
       options[option].isFree = true;
+    }
+    if (options[option].isFree && options[option].count === 2) {
+      item.previousElementSibling.querySelector(
+        '.product__options-cost-value',
+      ).textContent = 60;
     }
     count.textContent = options[option].count;
     price.textContent = options.getCost();

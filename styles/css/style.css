@@ -116,6 +116,10 @@ body {
 .product__options-item-count-block .disable path {
   fill: rgba(2, 10, 10, 0.3);
 }
+.product__options-item-count-block p {
+  width: 32px;
+  text-align: center;
+}
 .product__options-cost {
   color: rgb(120, 120, 120);
 }
@@ -125,7 +129,7 @@ body {
 }
 .product__price-block p {
   font-weight: 700;
-  font-size: 23px;
+  font-size: 32px;
 }
 .product__price-block button {
   width: 176px;
